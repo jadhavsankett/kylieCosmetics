@@ -1,0 +1,141 @@
+.imp-div{
+    min-height: 100vh;
+    width: 100vw;
+    background: #F0E2D7;
+}
+
+.imp-div .first{
+    width: 100%;
+    height: 85%;
+    display: flex;
+    justify-content: space-between;
+    padding: 3rem 8rem;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.imp-div .first .elem{
+    flex-shrink: 0;
+    width: 47%;
+    height: 30rem;
+    border-radius: 2rem;
+    box-shadow: 10px 15px 20px #D9A299;
+    overflow: hidden;
+    position: relative;
+}
+    
+.imp-div .first .elem img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    z-index: 0;
+}
+
+.imp-div .first .elem h1{
+    position: absolute;
+    z-index: 1;
+    bottom: 20%;
+    font-size: 3rem;
+    text-align: start;
+    padding: 1rem;
+    font-weight: 900;
+    color: white;
+}
+
+.imp-div .first .elem button{
+     position: absolute;
+     z-index: 1;
+     bottom: 10%;
+     font-size: 1rem;
+     padding: 1rem 2rem;
+     background-color: white;
+     border-radius: .5rem;
+     left: 5%;
+     cursor: pointer;
+     transition: all ease 0.2s;
+}
+
+.imp-div .first .elem button:active{
+    scale: .97;
+}
+
+
+.imp-div .first h2{
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+
+/* blur effect */
+
+
+@media (max-width: 1024px) {
+  .imp-div .first {
+    padding: 2rem 4rem;
+  }
+
+  .imp-div .first .elem {
+    width: 100%;
+    height: 28rem;
+  }
+
+  .imp-div .first .elem h1 {
+    font-size: 2.2rem;
+  }
+
+  .imp-div .first .elem button {
+    font-size: 0.9rem;
+    padding: 0.8rem 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .imp-div .first {
+    padding: 2rem;
+    gap: 1.5rem;
+  }
+
+  .imp-div .first .elem {
+    height: 24rem;
+  }
+
+  .imp-div .first .elem h1 {
+    font-size: 1.8rem;
+    bottom: 25%;
+  }
+
+  .imp-div .first .elem button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .imp-div .first {
+    padding: 1.5rem 1rem;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .imp-div .first .elem {
+    width: 100%;
+    height: 22rem;
+  }
+
+  .imp-div .first .elem h1 {
+    font-size: 1.5rem;
+    padding: 0.8rem;
+  }
+
+  .imp-div .first .elem button {
+    font-size: 0.8rem;
+    padding: 0.6rem 1rem;
+  }
+
+  .imp-div .first h2 {
+    font-size: 1.2rem;
+    text-align: center;
+    width: 100%;
+  }
+}

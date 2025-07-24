@@ -1,0 +1,172 @@
+.fit{
+  min-height: 100dvh;
+  background-color: #222123;
+  position: relative;
+}
+
+
+.benefit-section {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.benefit-section p {
+  color: #fff8f0; 
+  font-family: var(--font-paragraph);
+  text-align: center;
+  font-size: 1.125rem; 
+}
+
+.benefit-section .first-title {
+  transform: rotate(3deg);
+  position: relative;
+  z-index: 10;
+}
+
+.benefit-section .second-title {
+  transform: rotate(-1deg);
+}
+
+@media (min-width: 768px) {
+  .benefit-section .second-title {
+    transform: rotate(-1deg) translateY(-1.25rem); /* md:-translate-y-5 */
+  }
+}
+
+.benefit-section .third-title {
+  transform: rotate(1deg);
+  position: relative;
+  z-index: 10;
+}
+
+@media (min-width: 768px) {
+  .benefit-section .third-title {
+    transform: rotate(1deg) translateY(-3rem); /* md:-translate-y-12 */
+  }
+}
+
+.benefit-section .fourth-title {
+  transform: rotate(-5deg);
+}
+
+@media (min-width: 768px) {
+  .benefit-section .fourth-title {
+    transform: rotate(-5deg) translateY(-3rem); /* md:-translate-y-12 */
+  }
+}
+
+.benefit-section .five-title {
+  transform: rotate(1deg);
+}
+
+@media (min-width: 768px) {
+  .benefit-section .five-title {
+    transform: rotate(1deg) translateY(-3rem); /* md:-translate-y-12 */
+  }
+}
+
+.benefit-section .vd-pin-section {
+  height: 100vh;
+  overflow: hidden;
+  margin-top: 5rem; /* mt-20 */
+}
+
+.benefit-section .vd-pin-section video {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+}
+
+.benefit-section .vd-pin-section .play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 9vw;
+  height: 9vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.1); 
+  backdrop-filter: blur(20px);
+  border-radius: 9999px;
+}
+
+.benefit-section .vd-pin-section img:first-of-type {
+  width: 15vw;
+  height: 15vw;
+}
+
+
+/* video pin section */
+
+.vd-pin-section {
+  height: 100dvh;
+  width: 100%;
+  /* background-color: red; */
+  overflow: hidden;
+  margin-top: 7rem; 
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .vd-pin-section {
+    height: 110vh;
+    transform: translateY(-15%) !important; /* md:!-translate-y-[15%] */
+    margin-top: 0;
+  }
+}
+
+.vd-pin-section video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.vd-pin-section .play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 9vw;
+  height: 9vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.1); /* #ffffff1a */
+  backdrop-filter: blur(20px); /* backdrop-blur-xl */
+  border-radius: 9999px; /* fully rounded */
+}
+
+.vd-pin-section .play-btn .play{
+  size: 2rem;
+}
+
+.vd-pin-section img:first-of-type {
+  width: 15vw;
+  height: 15vw;
+}
+
+
+
+/* 
+spin circle */
+
+.spin-circle {
+  animation: spin 20s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

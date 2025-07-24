@@ -1,0 +1,136 @@
+.flavor-section {
+  min-height: 100dvh;
+  background-color: #fff8f0; /* Assuming bg-milk = #fff8f0 */
+
+}
+
+.flavor-section .flavor-text-scroll {
+  transform: rotate(-3deg);
+  position: absolute;
+  z-index: 10;
+  border: 0.5vw solid #fff8f0; /* border-milk */
+}
+
+@media (min-width: 768px) {
+  .flavor-section .flavor-text-scroll {
+    transform: rotate(-3deg) translateY(1.25rem); /* md:translate-y-5 */
+  }
+}
+
+.flavor-section .first-text-split h1 {
+  color: #2d160f; /* text-dark-brown */
+  text-align: left;
+  /* font-size: 5rem; */
+}
+
+@media (min-width: 768px) {
+  .flavor-section .first-text-split h1 {
+    text-align: center;
+  }
+}
+
+.flavor-section .second-text-split h1 {
+  text-align: left;
+  /* font-size: 5.5rem; */
+}
+
+@media (min-width: 768px) {
+  .flavor-section .second-text-split h1 {
+    text-align: center;
+  }
+}
+
+.flavor-section .slider-wrapper {
+  height: auto;
+  min-height: 100dvh;
+  width: 100%;
+  margin-top: 0;
+}
+
+@media (min-width: 768px) {
+  .flavor-section .slider-wrapper {
+    min-height: fit-content;
+    margin-top: 5rem; /* md:mt-20 */
+  }
+}
+
+@media (min-width: 1280px) {
+  .flavor-section .slider-wrapper {
+    margin-top: 0;
+  }
+}
+
+.flavor-section .slider-wrapper .flavors {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.75rem; /* gap-7 */
+  flex-wrap: nowrap;
+}
+
+@media (min-width: 768px) {
+  .flavor-section .slider-wrapper .flavors {
+    flex-direction: row;
+    gap: 6rem; /* md:gap-24 */
+  }
+}
+
+@media (min-width: 1024px) {
+  .flavor-section .slider-wrapper .flavors {
+    gap: 13rem; /* lg:gap-52 */
+  }
+}
+
+@media (min-width: 1536px) {
+  .flavor-section .slider-wrapper .flavors {
+    gap: 18rem; /* 2xl:gap-72 */
+  }
+}
+
+.flavor-section .slider-wrapper .flavors .drinks {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  height: 20rem; /* h-80 */
+}
+
+@media (min-width: 768px) {
+  .flavor-section .slider-wrapper .flavors .drinks {
+    height: 100%;
+  }
+}
+
+.flavor-section .slider-wrapper .flavors .elements {
+  position: absolute;
+  bottom: 2.5rem; /* bottom-10 */
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .flavor-section .slider-wrapper .flavors .elements {
+    top: 0;
+    bottom: auto;
+  }
+}
+
+.flavor-section .slider-wrapper .flavors h1 {
+  position: absolute;
+  bottom: 1.25rem; /* bottom-5 */
+  left: 1.25rem;   /* left-5 */
+  color: #fff8f0;  /* text-milk */
+  font-size: 1.875rem; /* text-3xl */
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: -0.025em;
+}
+
+@media (min-width: 768px) {
+  .flavor-section .slider-wrapper .flavors h1 {
+    bottom: 2.5rem; /* md:bottom-10 */
+    left: 2.5rem;   /* md:left-10 */
+    font-size: 3.75rem; /* md:text-6xl */
+  }
+}

@@ -1,0 +1,217 @@
+.landing-page {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+   
+}
+
+.land-a {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    background-color: #DABDA0;
+}
+
+.circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 15rem;
+    height: 15rem;
+    /* background-color: #ef7b08ed; */
+     background-color: #DCC5B2;
+    filter: blur(25px);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation-name: anime2;
+    animation-duration: 5s;
+    transition: all 0.5s ease-in-out;
+}
+
+.squre {
+    position: absolute;
+    top: 50%;
+    left: 70%;
+    width: 20rem;
+    height: 20rem;
+    /* background-color: #e94946; */
+     background-color: #D9A299;
+    filter: blur(25px);
+    transform: translate(-50%, -50%) rotate(45deg);
+    animation-name: anime;
+    animation-duration: 5s;
+    transition: all 0.5s ease-in-out;
+}
+
+@keyframes anime {
+    from {
+        left: 20%;
+        rotate: 0deg;
+        background-color: #e5aea5;
+    }
+
+    to {
+        left: 70%;
+        rotate: 360deg;
+        background-color: #d6958a;
+    }
+}
+
+@keyframes anime2 {
+    from {
+        top: 0%;
+         background-color: #dbc5b4;
+
+    }
+
+    to {
+        left: 50%;
+         background-color: #e4dcd4;
+    }
+}
+
+
+.land-b {
+    position: relative;
+    z-index: 6;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+
+.land-span {
+    width: 100vw;
+    overflow: hidden;
+    white-space: nowrap;
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE/Edge */
+}
+
+.land-span::-webkit-scrollbar {
+    display: none;
+}
+
+.land-b .land-span span {
+    margin-top: 5rem;
+    flex-shrink: 0;
+    letter-spacing: 0.3;
+    font-size: 15rem;
+    font-weight: 900;
+    font-family: MYBold;
+    line-height: 0.9;
+    display: inline-block;
+    text-shadow: #d5cbc1;
+}
+
+
+.land-b .land-span .span2 {
+    background-image: url(/kylie8.jpg);
+    background-size: cover;
+    background-position: center;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.land-b .land-span .span8 {
+    background-image: url(/kylie9.jpg);
+    background-size: cover;
+    background-position: center;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+
+.land-b h2 {
+    margin-top: .8rem;
+    font-size: 7rem;
+    letter-spacing: .3rem;
+    text-align: start;
+    font-weight: 900;
+    font-family: MYBold, sans-serif;
+    color: #f7f7f7;
+    line-height: .8;
+    margin-bottom: 2rem;
+    padding: 0 1rem;
+}
+
+
+.land-b p {
+    font-size: 1.5rem;
+    font-weight: 900;
+    font-family: DemiBold, sans-serif;
+    padding: 0 1rem;
+    line-height: 1.5rem;
+}
+
+.land-c {
+    z-index: 7;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.land-c img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 99;
+}
+
+.flower-svg {
+    position: absolute;
+    top: 10%;
+    right: 5%;
+    animation: floatFlower 6s ease-in-out infinite;
+}
+
+@keyframes floatFlower {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-10px) rotate(10deg);
+    }
+}
+
+
+
+@media (max-width: 480px) {
+ 
+    .land-b .land-span span {
+    margin-top: 5rem;
+    flex-shrink: 0;
+    font-size: 3rem;
+    font-weight: 900;
+    font-family: MYBold;
+    display: inline-block;
+    text-shadow: #d5cbc1;
+}
+
+
+.land-b h2 {
+    font-size: 2rem;
+    color: #f7f7f7;
+}
+
+
+.land-b p {
+    display: none;
+}
+
+}

@@ -1,0 +1,52 @@
+
+.testimonials-section {
+ background-color: #FAEADE; 
+  position: relative;
+  width: 100%;
+  height: 120dvh;
+}
+
+.testimonials-section .pin-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding-left: 13rem; 
+  position: absolute;
+  /* bottom: 50vh; */
+}
+
+@media (min-width: 1536px) {
+  .testimonials-section .pin-box {
+    bottom: 8rem; 
+  }
+}
+
+.testimonials-section .pin-box .vd-card {
+  width: 20rem;
+  flex: none;
+  border: 0.5vw solid  #fff8f0 ;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  margin-left: -11rem; 
+  position: absolute;
+}
+
+@media (min-width: 768px) {
+  .testimonials-section .pin-box .vd-card {
+    width: 24rem; 
+    border-radius: 2vw; 
+    position: relative; 
+  }
+}
+
+
+.testimonials-section h1 {
+  text-transform: uppercase;
+  font-size: 20.5vw;
+  line-height: 105%;
+  letter-spacing: -0.4vw;
+  margin-left: 2vw;
+  font-weight: bold;
+}
+

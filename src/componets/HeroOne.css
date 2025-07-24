@@ -1,0 +1,275 @@
+.hero {
+    width: 100%;
+    min-height: 170vh;
+    background-color: var(--pri);
+    position: relative;
+    overflow: hidden;
+    padding: 4rem 2rem;
+    box-sizing: border-box;
+}
+
+.heading {
+    color: var(--text-dark);
+    margin-top: 2rem;
+    position: relative;
+}
+
+.heading h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    padding: 0 2rem;
+    line-height: 2rem;
+}
+
+.heading p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    padding: 0 2rem;
+}
+
+.heading h2 {
+    font-style: italic;
+    font-weight: 900;
+    font-size: 4rem;
+    color: var(--text-dark);
+    position: absolute;
+    top:60%;
+    left:30%;
+    text-decoration: line-through;
+    color: gray;
+}
+
+.heading img{
+    position: absolute;
+    width: 10rem;
+    top:70;
+    right: 25%;
+    z-index: 99;
+}
+
+
+/*image the masking */
+.svg-mask-image {
+    width: 50.5rem;
+    height: 40rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: 5rem;
+    z-index: 1;
+    transform: translate(-50%, -50%);
+    mask-image: url('/icon-ellipse.svg');
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    overflow: hidden;
+}
+
+.svg-mask-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
+.card-layout {
+    margin-top: 5rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 200px 200px;
+    gap: 2rem;
+    align-items: center;
+    justify-items: center;
+    position: relative;
+    z-index: 99;
+    padding: 5rem 2rem;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #e7e7e7cd;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    max-width: 17.625rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+.card img {
+    width: 5.5rem;
+    margin-bottom: 1rem;
+    background-color: var(--pri);
+    border-radius: 50%;
+
+}
+
+.card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.card p {
+    font-size: 0.8rem;
+    color: #555;
+    line-height: 1.4;
+}
+
+/* Positioning individual cards */
+.card-top-left {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    align-self: end;
+    position: absolute;
+    top: 10;
+    left: 40%;
+}
+
+.card-bottom-left {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    align-self: start;
+    position: absolute;
+   top: 0;
+    left: 0;
+}
+
+.card-top-right {
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+    align-self: end;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.card-bottom-right {
+    grid-column: 3 / 4;
+    grid-row: 2 / 3;
+    align-self: start;
+    position: absolute;
+    right: 40%;
+    bottom: 5;
+}
+
+
+.spring img{
+    margin-top: 2rem;
+    width: 10rem;
+    position: absolute;
+    bottom: 0%;
+    left: 30%;
+}
+
+
+.string{
+    margin-left: 10vw;
+    width: 62.5rem;
+}
+
+
+
+/* res */
+
+@media (max-width: 1024px) {
+    .heading h1 {
+        font-size: 2rem;
+    }
+
+    .heading h2 {
+        font-size: 3rem;
+        top: 55%;
+        left: 20%;
+    }
+
+    .svg-mask-image {
+        width: 90vw;
+        height: auto;
+    }
+
+    .card-layout {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+    }
+
+    .card-top-left,
+    .card-bottom-left,
+    .card-top-right,
+    .card-bottom-right {
+        position: static;
+    }
+
+    .spring img {
+        width: 8rem;
+        left: 20%;
+    }
+
+    .string {
+        width: 80vw;
+    }
+}
+
+@media (max-width: 768px) {
+    .heading h1 {
+        font-size: 1.8rem;
+        padding: 0 1rem;
+    }
+
+    .heading h2 {
+        font-size: 2.5rem;
+        top: 60%;
+        left: 10%;
+    }
+
+    .heading p {
+        font-size: 0.75rem;
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .heading h1 {
+        font-size: 1.5rem;
+    }
+
+    .heading h2 {
+        display: none;
+    }
+
+    .heading img{
+        display: none;
+    }
+
+    .svg-mask-image {
+        width: 100%;
+        top: 20%;
+        height: auto;
+    }
+
+    .card-layout{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: sp;
+        gap: 5rem;
+    }
+
+    .card {
+        width: 20rem;
+        height: 20rem;
+        left: 50%;
+    }
+
+    .card img {
+        width: 4rem;
+    }
+
+    .spring img {
+       display: none;
+    }
+}
