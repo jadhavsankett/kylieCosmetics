@@ -1,19 +1,7 @@
-// import {useForm} from "react-hook-form"useNavigate 
 import { Link} from "react-router-dom"
-// import { useDispatch } from "react-redux"
-// import { asyncloginuser } from "../store/actions/UserAction"
 import '../pages/login.css'
 
 const Login = () => {
-//   const {register , reset , handleSubmit } = useForm()
-//   const dispatch = useDispatch()
-//   const navigate = useNavigate()
-
-//   const loginhandler = (user)=>{
-  
-//        dispatch(asyncloginuser(user))
-//        navigate("/products")
-//   }
 
     return (
         <div className="login-container">       
@@ -23,16 +11,13 @@ const Login = () => {
                 <p className="sub-text">The faster you fill up, the faster you get a ticket</p>
 
                 <form 
-                // onSubmit={handleSubmit(loginhandler)}
                 className="login-form">
                     <label>Email</label>
                     <input 
-                    // {...register("email")}
                     type="email" placeholder="Enter your email" />
 
                     <label>Password</label>
                     <input 
-                    // {...register("pass")}
                     type="password" placeholder="********" />
 
                     <div className="form-options">
@@ -56,7 +41,6 @@ const Login = () => {
                     src="https://scontent.cdninstagram.com/v/t51.82787-15/517360150_18475135798072786_527372106251579028_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=101&ccb=1-7&_nc_sid=18de74&_nc_ohc=R-l-2sZuepMQ7kNvwF8WiWk&_nc_oc=Adm7hIzE-a355V8mrs2YPg9ffYDIbfU3UVYXAoETriaFH4NWlHeAqqLX-Y8OjooqSFU&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=MOOVTN-N-_J6rn92cUQtVA&oh=00_AfQRQ2apYw07YTU_U6r0SLJwysSD4mxSnUCEgtFA2LZiSQ&oe=687DEA60"
                     alt="login cover"
                 />
-                {/* <img className="hover-img" src="https://scontent.cdninstagram.com/v/t51.82787-15/514598446_18474226552072786_5103876841886419903_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=108&ccb=1-7&_nc_sid=18de74&_nc_ohc=watyryZuhwIQ7kNvwExijiA&_nc_oc=AdlHi_SJjd7yVzkLiEjcHJyQFQtPrjEX20cQKR40DkXCZz6JYAt-rzlRr4Q1hImwTZQ&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=0nTDAraRchgNR2x952GPkw&oh=00_AfT9HrUWHGWuE5dDlwcxerpdj1KtschPqIVYpUvZJ4PUjg&oe=687DEFAD" alt="Hover Cover" /> */}
                 <video
                     className="hover-img"
                     src="https://kyliecosmetics.com/cdn/shop/videos/c/vp/3e77cc97002d498392970c28bc8c01f9/3e77cc97002d498392970c28bc8c01f9.HD-1080p-7.2Mbps-50852224.mp4?v=0"
