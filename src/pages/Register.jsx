@@ -1,21 +1,21 @@
-import { useForm } from "react-hook-form"
-import { nanoid } from "nanoid"
-import { Link, useNavigate } from "react-router-dom"
-import {useDispatch} from "react-redux"
-import { asyncregisteruser } from "../store/actions/UserAction"
+// import { useForm } from "react-hook-form" , useNavigate 
+// import { nanoid } from "nanoid"
+import { Link} from "react-router-dom"
+// import {useDispatch} from "react-redux"
+// import { asyncregisteruser } from "../store/actions/UserAction"
 import '../pages/login.css'
 
 const Register = () => {
-  const { register, reset, handleSubmit } = useForm()
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+  // const { register, reset, handleSubmit } = useForm()
+  // const dispatch = useDispatch()
+  // const navigate = useNavigate()
 
-  const Registerhandler = (user) => {
-    user.id = nanoid()
-    console.log(user)
-    dispatch(asyncregisteruser(user))
-    navigate("/login")
-  }
+  // const Registerhandler = (user) => {
+  //   user.id = nanoid()
+  //   console.log(user)
+  //   dispatch(asyncregisteruser(user))
+  //   navigate("/login")
+  // }
 
   return (
     <div className="login-container">
@@ -45,26 +45,26 @@ const Register = () => {
         <div id="gooey"></div>
         <h2 className="welcome-text">Create account<span>!</span></h2>
         <form
-          onSubmit={handleSubmit(Registerhandler)}
+          // onSubmit={handleSubmit(Registerhandler)}
           className="login-form">
           <label>Full Name</label>
           <input 
-          {...register("name")}
+          // {...register("name")}
           type="text" placeholder="Enter your full name" />
 
           <label>Email</label>
           <input 
-          {...register("email")}
+          // {...register("email")}
           type="email" placeholder="Enter your email" />
 
           <label>Password</label>
           <input 
-          {...register("pass")}
+          // {...register("pass")}
           type="password" placeholder="Create a password" />
 
           <label>Confirm Password</label>
           <input 
-          {...register("c-pass")}
+          // {...register("c-pass")}
           type="password" placeholder="Re-enter your password" />
 
           <button className="signin-btn">Register</button>

@@ -1,20 +1,19 @@
-import {useForm} from "react-hook-form"
-import {nanoid} from "nanoid"
-import { Link, useNavigate } from "react-router-dom"
-import { useDispatch } from "react-redux"
-import { asyncloginuser } from "../store/actions/UserAction"
+// import {useForm} from "react-hook-form"useNavigate 
+import { Link} from "react-router-dom"
+// import { useDispatch } from "react-redux"
+// import { asyncloginuser } from "../store/actions/UserAction"
 import '../pages/login.css'
 
 const Login = () => {
-  const {register , reset , handleSubmit } = useForm()
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+//   const {register , reset , handleSubmit } = useForm()
+//   const dispatch = useDispatch()
+//   const navigate = useNavigate()
 
-  const loginhandler = (user)=>{
+//   const loginhandler = (user)=>{
   
-       dispatch(asyncloginuser(user))
-       navigate("/products")
-  }
+//        dispatch(asyncloginuser(user))
+//        navigate("/products")
+//   }
 
     return (
         <div className="login-container">       
@@ -24,16 +23,16 @@ const Login = () => {
                 <p className="sub-text">The faster you fill up, the faster you get a ticket</p>
 
                 <form 
-                onSubmit={handleSubmit(loginhandler)}
+                // onSubmit={handleSubmit(loginhandler)}
                 className="login-form">
                     <label>Email</label>
                     <input 
-                    {...register("email")}
+                    // {...register("email")}
                     type="email" placeholder="Enter your email" />
 
                     <label>Password</label>
                     <input 
-                    {...register("pass")}
+                    // {...register("pass")}
                     type="password" placeholder="********" />
 
                     <div className="form-options">
