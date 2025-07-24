@@ -38,7 +38,7 @@ const Login = () => {
 
             <div className="login-right" onMouseEnter={() => document.querySelector('.hover-img')?.play()} onMouseLeave={() => document.querySelector('.hover-img')?.pause()}>
                 <img
-                    src="https://scontent.cdninstagram.com/v/t51.82787-15/517360150_18475135798072786_527372106251579028_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=101&ccb=1-7&_nc_sid=18de74&_nc_ohc=R-l-2sZuepMQ7kNvwF8WiWk&_nc_oc=Adm7hIzE-a355V8mrs2YPg9ffYDIbfU3UVYXAoETriaFH4NWlHeAqqLX-Y8OjooqSFU&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=MOOVTN-N-_J6rn92cUQtVA&oh=00_AfQRQ2apYw07YTU_U6r0SLJwysSD4mxSnUCEgtFA2LZiSQ&oe=687DEA60"
+                    src="/log-2.jpg"
                     alt="login cover"
                 />
                 <video
