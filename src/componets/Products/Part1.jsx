@@ -561,6 +561,63 @@ export default function Part1() {
                 </div>
             </div>
 
+
+            <div className=" py-15 px-4 md:px-16">
+                <div className="max-w-8xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-white p-8 rounded-2xl shadow-xl">
+                    <div>
+                        <h2 className="text-xl font-semibold mb-6 text-black">why we love it</h2>
+
+                        <div className="grid grid-cols-2 gap-x-8 gap-y-6">
+                            <div>
+                                <h3 className="text-lg font-semibold text-[#b68294] mb-2">glossy lip kit</h3>
+
+                                <div className="mb-4">
+                                    <p className="font-semibold text-black">pre-paired shades</p>
+                                    <p className="text-sm text-gray-600">create a comfortable, contrasting lip contour.</p>
+                                </div>
+
+                                <div className="mb-4">
+                                    <p className="font-semibold text-black">glossy finish</p>
+                                    <p className="text-sm text-gray-600">leaves a mirror-like shine for a fuller-looking pout.</p>
+                                </div>
+
+                                <div>
+                                    <p className="font-semibold text-black">long-lasting wear</p>
+                                    <p className="text-sm text-gray-600">stays put and delivers an all-day glow.</p>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h3 className="text-lg font-semibold text-[#b68294] mb-2">hybrid blush</h3>
+
+                                <div className="mb-4">
+                                    <p className="font-semibold text-black">airy and weightless</p>
+                                    <p className="text-sm text-gray-600">innovative, silky-smooth formula with a suede-like texture.</p>
+                                </div>
+
+                                <div className="mb-4">
+                                    <p className="font-semibold text-black">skin-like, soft-matte finish</p>
+                                    <p className="text-sm text-gray-600">never looks flat and leaves a diffused blush look.</p>
+                                </div>
+
+                                <div>
+                                    <p className="font-semibold text-black">up to 12-hour wear</p>
+                                    <p className="text-sm text-gray-600">water-resistant, sweat- and humidity-proof, and perfect for layering.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="w-full">
+                        <img
+                            src="/images/set-p.webp"
+                            alt="Glossy Lip Kits and Blush Pencils"
+                            className="w-full rounded-2xl object-cover"
+                        />
+                    </div>
+                </div>
+            </div>
+
         </div>
     );
 }
