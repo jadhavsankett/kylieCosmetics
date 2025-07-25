@@ -27,7 +27,6 @@ import {
 } from "./Ui/Images";
 import { ScrollTrigger } from "gsap/all";
 
-
 const products = [
     {
         title: "peach mango",
@@ -254,10 +253,39 @@ const glossyKits = [
     // },
 ];
 
+const products2 = [
+  {
+    id: 1,
+    type: "image",
+    image: "/images/fre1.webp",
+    title: "cosmic kylie jenner 2.0 & summer makeup collection...",
+    price: "₹12,300",
+    oldPrice: "₹17,700",
+    subtitle: "floral amber scent + glowy, glazed skin",
+    tag: "new",
+  },
+  {
+    id: 2,
+    type: "image",
+    image: "/images/fre2.webp",
+    title: "cosmic kylie jenner 2.0 eau de parfum",
+    price: "₹7,200",
+    subtitle: "100ml",
+    rating: 775,
+    sizes: true,
+    tag: "new",
+  },
+  {
+    id: 3,
+    type: "video",
+    video: "/video/fre.mp4",
+  },
+];
 
 
 export default function Part1() {
     const imageRefs = useRef([]);
+    const videoRef = useRef(null);
     const [filter, setFilter] = useState("all");
     const [sort, setSort] = useState("featured");
     const [search, setSearch] = useState("");
@@ -562,10 +590,10 @@ export default function Part1() {
             </div>
 
 
-            <div className=" py-15 px-4 md:px-16">
+            <div className=" pb-15 px-4 md:px-16">
                 <div className="max-w-8xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-white p-8 rounded-2xl shadow-xl">
                     <div>
-                        <h2 className="text-xl font-semibold mb-6 text-black">why we love it</h2>
+                        <h2 className="text-7xl font-semibold mb-10 text-black">why we love it</h2>
 
                         <div className="grid grid-cols-2 gap-x-8 gap-y-6">
                             <div>
@@ -616,6 +644,74 @@ export default function Part1() {
                         />
                     </div>
                 </div>
+            </div>
+
+            <div
+                className="w-full h-[200px] bg-cover bg-center flex items-center justify-start px-10 shadow-amber-800"
+                style={{
+                    backgroundImage: `url('/images/banner.webp')`,
+                }}
+            >
+                <div className="max-w-md text-white space-y-4">
+                    <h2 className="text-3xl font-bold">THE<br />COSMIC UNIVERSE</h2>
+                    <p className="text-sm">
+                        go on a cosmic journey this summer with our out of this world, captivating scents.
+                    </p>
+                    <button className="bg-white text-black px-4 py-2 rounded shadow hover:bg-gray-100 transition">
+                        shop now
+                    </button>
+                </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4 text-white rounded-lg">
+                {products2.map((product) => (
+                    <div
+                        key={product.id}
+                        className="rounded-xl overflow-hidden bg-white text-black shadow relative"
+                    >
+                        {product.type === "image" ? (
+                            <>
+                                <img
+                                    src={product.image}
+                                    alt={product.title}
+                                    className="w-full h-60 object-cover"
+                                />
+                                <div className="p-4 pb-7 text-sm">
+                                    <h3 className="font-semibold line-clamp-2">{product.title}</h3>
+                                    <div className="flex items-center gap-2 text-base font-bold mt-1">
+                                        <span>{product.price}</span>
+                                        {product.oldPrice && (
+                                            <span className="line-through text-gray-400 text-sm">
+                                                {product.oldPrice}
+                                            </span>
+                                        )}
+                                    </div>
+                                    <p className="text-xs text-gray-600 mt-1">{product.subtitle}</p>
+                                </div>
+                                {product.tag && (
+                                    <span className="absolute top-2 right-2 bg-gray-100 text-black text-xs px-2 py-0.5 rounded-full">
+                                        {product.tag}
+                                    </span>
+                                )}
+                                {product.rating && (
+                                    <div className="absolute bottom-2 left-3 text-xs text-gray-500">
+                                        ★★★★★ ({product.rating}) {product.sizes ? "• 3 sizes" : ""}
+                                    </div>
+                                )}
+                            </>
+                        ) : (
+                            <video
+                                ref={videoRef}
+                                src={product.video}
+                                autoPlay
+                                muted
+                                loop
+                                playsInline
+                                className="w-full h-full object-cover"
+                            />
+                        )}
+                    </div>
+                ))}
             </div>
 
         </div>
