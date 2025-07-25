@@ -3,10 +3,34 @@ import { useEffect } from "react";
 import gsap from "gsap";
 import { SplitText } from "gsap/all";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from '@gsap/react';
 
 const AboutFirst = () => {
 
-    gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger);
+
+    useGSAP(()=>{
+         const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: '.commit',
+                start: 'top 50%',
+                end: 'top 20%',
+                scrub: 2,
+            }
+        })
+        tl.from('.commit-1', {
+            y: 100,
+            opacity: 0,
+            duration: 2
+        }
+        ).from('.commit-2', {
+            y: 100,
+            opacity: 0,
+            duration: 2,
+        }
+        )
+
+    })
 
     useEffect(() => {
         // Great Horned Owl Sequence
@@ -175,6 +199,7 @@ const AboutFirst = () => {
                 ".titleBurrowing",
             ]);
         };
+
     }, []);
 
     return (
@@ -225,16 +250,68 @@ const AboutFirst = () => {
                     </div>
                 </section>
 
-                <section className="spcr300"></section>
-                
-                
+                <div className='commit flex items-center justify-between px-10 pb-5'>
+
+                    <div className="commit-1 flex items-start space-x-4 p-4 rounded-xl shadow-md max-w-xl">
+                        <img
+                            src="/images/kylie-a.jpg"
+                            alt="Kylie Jenner"
+                            className="w-full h-50 rounded-full object-cover"
+                        />
+                        <div>
+                            <div className="font-semibold text-sm">@kyliejenner</div>
+                            <div className="text-sm text-gray-700 mt-1">
+                                Kylie Jenner is a global influencer, entrepreneur, and beauty icon. With over 300 million followers, she's built one of the most recognizable cosmetics brands in the world.
+                            </div>
+                            <ul className="mt-2 text-sm text-gray-800 space-y-1">
+                                <li>🌟 Started Kylie Cosmetics in 2015</li>
+                                <li>📸 390M+ Instagram followers</li>
+                                <li>💼 Youngest self-made billionaire (Forbes 2019)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+
+                    <div className="commit-1 flex items-start space-x-4 p-4 rounded-xl shadow-md max-w-xl">
+                        <img
+                            src="/images/kylie-b.jpg"
+                            alt="Kylie Jenner"
+                            className="w-full h-50 rounded-full object-cover"
+                        />
+                        <div>
+                            <div className="font-semibold text-sm">Follow Kylie</div>
+                            <div className="text-sm text-gray-700 mt-1">
+                                Kylie’s journey proves that social media isn’t just a platform — it’s a business model. Her brand showcases the power of influencers in shaping culture and commerce.
+                            </div>
+                            <ul className="mt-2 text-sm text-gray-800 space-y-1">
+                                    <li>
+                                        <a href="https://www.instagram.com/kyliejenner" target="_blank">
+                                            ⭐instagram 
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.tiktok.com/@kyliejenner" target="_blank">
+                                            ⭐tiktok
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://twitter.com/KylieJenner" target="_blank">
+                                           ⭐twitter
+                                        </a>
+                                    </li>
+                                </ul>
+                        </div>
+                    </div>
+
+
+                </div>
+
                 <div className="look">
                     <h1>KYLIE'S LOOKS</h1>
                     <h3>we’ve rounded up everything you need to create these iconic looks.</h3>
                 </div>
-
-
-            </div>            
+            </div>
         </>
     )
 }

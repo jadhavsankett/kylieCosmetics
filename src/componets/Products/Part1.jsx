@@ -26,6 +26,11 @@ import {
     LipOilDessertsPRBox,
 } from "./Ui/Images";
 import { ScrollTrigger } from "gsap/all";
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap';
+import { AnimatePresence, motion } from "framer-motion";
+
+
 
 const products = [
     {
@@ -210,7 +215,6 @@ const products = [
     },
 ];
 
-
 const glossyKits = [
     {
         title: "comes naturally",
@@ -244,43 +248,141 @@ const glossyKits = [
         type: "glossy finish + second-skin blur",
         image: "/images/g4.webp",
     },
-    //  {
-    //     title: "glossy lip kit",
-    //     price: "₹5,400",
-    //     originalPrice: "₹6,000",
-    //     type: "glossy finish + second-skin blur",
-    //     image: "/images/g1.webp",
-    // },
+    {
+        title: "glossy lip kit",
+        price: "₹5,400",
+        originalPrice: "₹6,000",
+        type: "glossy finish + second-skin blur",
+        image: "/images/g1.webp",
+    },
 ];
 
 const products2 = [
-  {
-    id: 1,
-    type: "image",
-    image: "/images/fre1.webp",
-    title: "cosmic kylie jenner 2.0 & summer makeup collection...",
-    price: "₹12,300",
-    oldPrice: "₹17,700",
-    subtitle: "floral amber scent + glowy, glazed skin",
-    tag: "new",
-  },
-  {
-    id: 2,
-    type: "image",
-    image: "/images/fre2.webp",
-    title: "cosmic kylie jenner 2.0 eau de parfum",
-    price: "₹7,200",
-    subtitle: "100ml",
-    rating: 775,
-    sizes: true,
-    tag: "new",
-  },
-  {
-    id: 3,
-    type: "video",
-    video: "/video/fre.mp4",
-  },
+    {
+        id: 1,
+        type: "image",
+        image: "/images/fre1.webp",
+        title: "cosmic kylie jenner 2.0 & summer makeup collection...",
+        price: "₹12,300",
+        oldPrice: "₹17,700",
+        subtitle: "floral amber scent + glowy, glazed skin",
+        tag: "new",
+    },
+    {
+        id: 2,
+        type: "image",
+        image: "/images/fre2.webp",
+        title: "cosmic kylie jenner 2.0 eau de parfum",
+        price: "₹7,200",
+        subtitle: "100ml",
+        rating: 775,
+        sizes: true,
+        tag: "new",
+    },
+    {
+        id: 3,
+        type: "video",
+        video: "/video/fre.mp4",
+    },
 ];
+
+const productData = [
+    {
+        image: "/images/set-p.webp",
+        title: "why we love it",
+        sections: [
+            {
+                title: "glossy lip kit",
+                features: [
+                    {
+                        label: "pre-paired shades",
+                        desc: "create a comfortable, contrasting lip contour.",
+                    },
+                    {
+                        label: "glossy finish",
+                        desc: "leaves a mirror-like shine for a fuller-looking pout.",
+                    },
+                    {
+                        label: "long-lasting wear",
+                        desc: "stays put and delivers an all-day glow.",
+                    },
+                ],
+            },
+            {
+                title: "hybrid blush",
+                features: [
+                    {
+                        label: "airy and weightless",
+                        desc: "innovative, silky-smooth formula with a suede-like texture.",
+                    },
+                    {
+                        label: "skin-like, soft-matte finish",
+                        desc: "never looks flat and leaves a diffused blush look.",
+                    },
+                    {
+                        label: "up to 12-hour wear",
+                        desc: "water-resistant, sweat- and humidity-proof, and perfect for layering.",
+                    },
+                ],
+            },
+        ],
+    },
+    {
+        image: "/images/lip-kit.jpg",
+        title: "bold gloss, bolder attitude",
+        sections: [
+            {
+                title: "glow lip duo",
+                features: [
+                    {
+                        label: "bold pigments",
+                        desc: "statement-making colors that pop on every skin tone.",
+                    },
+                    {
+                        label: "hydrating texture",
+                        desc: "infused with jojoba oil for all-day comfort.",
+                    },
+                    {
+                        label: "non-sticky",
+                        desc: "shiny finish without the tacky feel.",
+                    },
+                ],
+            },
+            {
+                title: "sunset blush",
+                features: [
+                    {
+                        label: "buildable color",
+                        desc: "soft wash to intense payoff in one swipe.",
+                    },
+                    {
+                        label: "summer-safe formula",
+                        desc: "fade-resistant even under the sun.",
+                    },
+                    {
+                        label: "vegan & cruelty-free",
+                        desc: "feel-good beauty, no compromises.",
+                    },
+                ],
+            },
+        ],
+    },
+];
+
+const containerVariants = {
+    hidden: {},
+    show: {
+        transition: {
+            staggerChildren: 0.2,
+        },
+    },
+};
+
+
+const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+};
 
 
 export default function Part1() {
@@ -291,6 +393,10 @@ export default function Part1() {
     const [search, setSearch] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 16;
+    const [activeIndex, setActiveIndex] = useState(0);
+    const current = productData[activeIndex];
+
+
 
     const filteredProducts = products
         .filter((p) => filter === "all" || p.category === filter)
@@ -340,11 +446,82 @@ export default function Part1() {
     };
 
 
-    const scrollRef = useRef();
+    const scrollRef = useRef(null);
+
+    const scroll = (direction) => {
+        const { current } = scrollRef;
+        if (!current) return;
+
+        const scrollAmount = 300;
+        current.scrollBy({
+            left: direction === "left" ? -scrollAmount : scrollAmount,
+            behavior: "smooth",
+        });
+    };
+
+
+    useGSAP(() => {
+
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: '.big-box',
+                start: 'top 40%',
+                end: 'top 20%',
+                scrub: 2,
+            }
+        })
+        tl.from('.left.side', {
+            x: -300,
+            opacity: 0,
+            duration: 3
+        }, 'anime1'
+        ).from('.top.side', {
+            y: 300,
+            opacity: 0,
+            duration: 1
+        }, 'anime1'
+        ).from('.right.side', {
+            x: 300,
+            opacity: 0,
+            duration: 3
+        }, 'anime1'
+        )
+
+
+        const tl2 = gsap.timeline({
+            scrollTrigger: {
+                trigger: '.big-box',
+                start: 'top -15%',
+                end: 'top 20%',
+                scrub: 2,
+            }
+        })
+        tl2.from('.left.bottom', {
+            x: -300,
+            opacity: 0,
+            duration: 2
+        }, 'anime1'
+        ).from('.top.bottom', {
+            y: 300,
+            opacity: 0,
+            duration: 1
+        }, 'anime1'
+        ).from('.right.bottom', {
+            x: 300,
+            opacity: 0,
+            duration: 2
+        }, 'anime1'
+        )
+
+
+
+    })
+
 
     return (
         <div className="p-4 pt-15 bg-[#FAEADE]">
             <h1 className="text-3xl font-bold mb-6">LIPS</h1>
+
             <div className="flex flex-wrap gap-4 mb-6 items-center">
 
                 <Button variant={filter === "lip oil" ? "default" : "outline"} onClick={() => setFilter("lip oil")}>lip oils</Button>
@@ -456,10 +633,10 @@ export default function Part1() {
             </div>
 
 
-            <div className="bg-[#FDF5F2] py-8 px-4 rounded-xl shadow-md mb-12">
+            <div className="big-box bg-[#FDF5F2] py-8 px-4 rounded-xl shadow-md mb-12">
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                     {/* Top Left Image */}
-                    <div className="relative overflow-hidden rounded-xl">
+                    <div className="left side relative overflow-hidden rounded-xl">
                         <img
                             src="/images/brown-p.webp"
                             alt="Brown Mascara"
@@ -471,7 +648,7 @@ export default function Part1() {
                     </div>
 
                     {/* Top Middle Image */}
-                    <div className="relative overflow-hidden rounded-xl">
+                    <div className="top side relative overflow-hidden rounded-xl">
                         <img
                             src="/images/eyes-p.webp"
                             alt="Full Lashes"
@@ -483,7 +660,7 @@ export default function Part1() {
                     </div>
 
                     {/* Top Right Image */}
-                    <div className="relative overflow-hidden rounded-xl">
+                    <div className="right side relative overflow-hidden rounded-xl">
                         <img
                             src="/images/two-p.webp"
                             alt="Eyes Close Up"
@@ -491,17 +668,27 @@ export default function Part1() {
                         />
                     </div>
 
+
+
+
+
                     {/* Bottom Right Image */}
-                    <div className="relative overflow-hidden rounded-xl">
-                        <img
-                            src="/images/right-1.webp"
-                            alt="Mascara Product"
+                    <div className="left bottom relative overflow-hidden rounded-xl">
+                        <video
+                            src="/video/f7.mp4"
+                            poster="/images/right-1.webp"
                             className="w-full h-full object-cover"
+                            muted
+                            loop
+                            playsInline
+                            onMouseEnter={(e) => e.target.play()}
+                            onMouseLeave={(e) => e.target.pause()}
                         />
                     </div>
 
+
                     {/* Center Promo Text */}
-                    <div className="col-span-2 md:col-span-1 bg-white flex flex-col justify-center items-center text-center p-6 rounded-xl shadow">
+                    <div className="top bottom col-span-2 md:col-span-1 bg-white flex flex-col justify-center items-center text-center p-6 rounded-xl shadow">
                         <h2 className="text-lg md:text-xl font-bold text-[#B57286] mb-2">
                             YOUR LASHES, BUT FULLER
                         </h2>
@@ -515,14 +702,22 @@ export default function Part1() {
                         <Button>shop now</Button>
                     </div>
 
+
                     {/* Bottom Right Image */}
-                    <div className="relative overflow-hidden rounded-xl">
-                        <img
-                            src="/images/lips-p.webp"
-                            alt="Mascara Product"
+                    <div className="right bottom relative overflow-hidden rounded-xl">
+                        <video
+                            src="/video/lip.mp4"
+                            poster="/images/lips-p.webp"
                             className="w-full h-full object-cover"
+                            muted
+                            loop
+                            playsInline
+                            onMouseEnter={(e) => e.target.play()}
+                            onMouseLeave={(e) => e.target.pause()}
                         />
                     </div>
+
+
                 </div>
             </div>
 
@@ -532,18 +727,22 @@ export default function Part1() {
                 <div className="relative overflow-hidden">
                     <button
                         onClick={() => scroll("left")}
-                        className="absolute z-10 left-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full shadow p-2"
+                        className="absolute z-10 left-0 top-1/2 transform -translate-y-1/2 bg-pink-100 rounded-full shadow p-2"
                     >
                         ←
                     </button>
+
                     <div
                         ref={scrollRef}
-                        className="flex space-x-8 overflow-x-auto no-scrollbar scroll-smooth"
+                        className="flex space-x-5 overflow-x-auto no-scrollbar scroll-smooth p-5"
                     >
                         {glossyKits.map((item, idx) => (
                             <div
                                 key={idx}
-                                className="min-w-[260px] bg-white rounded-lg shadow-sm overflow-hidden"
+                                className="min-w-[260px] bg-white rounded-lg shadow-sm overflow-hidden border border-transparent transition-transform duration-300 hover:scale-105 hover:border-pink-400 hover:shadow-lg hover:shadow-pink-200"
+                                style={{
+                                    boxShadow: "0 0 10px rgba(244, 114, 182, 0.5)",
+                                }}
                             >
                                 <div className="relative">
                                     <img
@@ -580,9 +779,10 @@ export default function Part1() {
                             </div>
                         ))}
                     </div>
+
                     <button
                         onClick={() => scroll("right")}
-                        className="absolute z-10 right-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full shadow p-2"
+                        className="absolute z-10 right-0 top-1/2 transform -translate-y-1/2 bg-pink-100 rounded-full shadow p-2"
                     >
                         →
                     </button>
@@ -590,58 +790,73 @@ export default function Part1() {
             </div>
 
 
-            <div className=" pb-15 px-4 md:px-16">
+            <div className="pb-16 px-4 md:px-16">
                 <div className="max-w-8xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-white p-8 rounded-2xl shadow-xl">
-                    <div>
-                        <h2 className="text-7xl font-semibold mb-10 text-black">why we love it</h2>
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={activeIndex + "-text"}
+                            initial={{ opacity: 0, x: -40 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: 40 }}
+                            transition={{ duration: 0.4 }}
+                        >
+                            <h2 className="text-4xl md:text-7xl font-semibold mb-10 text-black capitalize">
+                                {current.title}
+                            </h2>
 
-                        <div className="grid grid-cols-2 gap-x-8 gap-y-6">
-                            <div>
-                                <h3 className="text-lg font-semibold text-[#b68294] mb-2">glossy lip kit</h3>
+                            <motion.div
+                                variants={containerVariants}
+                                initial="hidden"
+                                animate="show"
+                                className="grid grid-cols-2 gap-x-8 gap-y-6"
+                            >
+                                {current.sections.map((section, idx) => (
+                                    <motion.div key={idx} variants={itemVariants}>
+                                        <h3 className="text-lg font-semibold text-[#b68294] mb-2">
+                                            {section.title}
+                                        </h3>
+                                        {section.features.map((feature, i) => (
+                                            <motion.div className="mb-4" key={i} variants={itemVariants}>
+                                                <p className="font-semibold text-black">{feature.label}</p>
+                                                <p className="text-sm text-gray-600">{feature.desc}</p>
+                                            </motion.div>
+                                        ))}
+                                    </motion.div>
+                                ))}
+                            </motion.div>
+                        </motion.div>
+                    </AnimatePresence>
 
-                                <div className="mb-4">
-                                    <p className="font-semibold text-black">pre-paired shades</p>
-                                    <p className="text-sm text-gray-600">create a comfortable, contrasting lip contour.</p>
-                                </div>
+                    {/* Image Section */}
+                    <div className="w-full space-y-4">
+                        <AnimatePresence mode="wait">
+                            <motion.img
+                                key={activeIndex + "-img"}
+                                src={current.image}
+                                alt={current.title}
+                                className="w-full rounded-2xl object-cover border-4 border-[#FDF5F2] cursor-pointer shadow transition hover:shadow-xl"
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.95 }}
+                                transition={{ duration: 0.4 }}
+                            />
+                        </AnimatePresence>
 
-                                <div className="mb-4">
-                                    <p className="font-semibold text-black">glossy finish</p>
-                                    <p className="text-sm text-gray-600">leaves a mirror-like shine for a fuller-looking pout.</p>
-                                </div>
-
-                                <div>
-                                    <p className="font-semibold text-black">long-lasting wear</p>
-                                    <p className="text-sm text-gray-600">stays put and delivers an all-day glow.</p>
-                                </div>
-                            </div>
-
-                            <div>
-                                <h3 className="text-lg font-semibold text-[#b68294] mb-2">hybrid blush</h3>
-
-                                <div className="mb-4">
-                                    <p className="font-semibold text-black">airy and weightless</p>
-                                    <p className="text-sm text-gray-600">innovative, silky-smooth formula with a suede-like texture.</p>
-                                </div>
-
-                                <div className="mb-4">
-                                    <p className="font-semibold text-black">skin-like, soft-matte finish</p>
-                                    <p className="text-sm text-gray-600">never looks flat and leaves a diffused blush look.</p>
-                                </div>
-
-                                <div>
-                                    <p className="font-semibold text-black">up to 12-hour wear</p>
-                                    <p className="text-sm text-gray-600">water-resistant, sweat- and humidity-proof, and perfect for layering.</p>
-                                </div>
-                            </div>
+                        {/* Carousel Thumbnails */}
+                        <div className="flex gap-3 mt-4">
+                            {productData.map((item, index) => (
+                                <img
+                                    key={index}
+                                    src={item.image}
+                                    alt={item.title}
+                                    className={`w-20 h-20 rounded-xl object-cover cursor-pointer border-2 transition ${index === activeIndex
+                                        ? "border-[#b68294]"
+                                        : "border-gray-300"
+                                        }`}
+                                    onClick={() => setActiveIndex(index)}
+                                />
+                            ))}
                         </div>
-                    </div>
-
-                    <div className="w-full">
-                        <img
-                            src="/images/set-p.webp"
-                            alt="Glossy Lip Kits and Blush Pencils"
-                            className="w-full rounded-2xl object-cover"
-                        />
                     </div>
                 </div>
             </div>
@@ -713,7 +928,6 @@ export default function Part1() {
                     </div>
                 ))}
             </div>
-
         </div>
     );
 }
