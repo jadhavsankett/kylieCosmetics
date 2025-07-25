@@ -212,6 +212,50 @@ const products = [
 ];
 
 
+const glossyKits = [
+    {
+        title: "comes naturally",
+        price: "₹3,200",
+        rating: 41,
+        tag: "kylie's favorite",
+        extra: "+6 shades",
+        type: "glossy lip kit",
+        image: "/images/g1.webp",
+    },
+    {
+        title: "coconut 2.0",
+        price: "₹3,200",
+        rating: 41,
+        tag: "kylie's favorite",
+        extra: "+6 shades",
+        type: "glossy lip kit",
+        image: "/images/g2.webp",
+    },
+    {
+        title: "glossy lip kit & hybrid blush duo",
+        price: "₹4,600",
+        originalPrice: "₹5,100",
+        type: "glossy finish + soft-matte flush",
+        image: "/images/g3.webp",
+    },
+    {
+        title: "glossy lip kit & skin tint blurring elixir duo",
+        price: "₹5,400",
+        originalPrice: "₹6,000",
+        type: "glossy finish + second-skin blur",
+        image: "/images/g4.webp",
+    },
+    //  {
+    //     title: "glossy lip kit",
+    //     price: "₹5,400",
+    //     originalPrice: "₹6,000",
+    //     type: "glossy finish + second-skin blur",
+    //     image: "/images/g1.webp",
+    // },
+];
+
+
+
 export default function Part1() {
     const imageRefs = useRef([]);
     const [filter, setFilter] = useState("all");
@@ -266,6 +310,9 @@ export default function Part1() {
         setSearch(e.target.value);
         setCurrentPage(1);
     };
+
+
+    const scrollRef = useRef();
 
     return (
         <div className="p-4 pt-15 bg-[#FAEADE]">
@@ -353,6 +400,167 @@ export default function Part1() {
                     Next
                 </Button>
             </div>
+
+            <div className="flex flex-col lg:flex-row bg-[#FDF5F2] p-6 rounded-2xl shadow mb-8 mt-8">
+                <div className="w-full lg:w-1/2 flex justify-center items-center mb-6 lg:mb-0">
+                    <video
+                        className="rounded-xl w-full max-w-md"
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                    >
+                        <source src="/video/kylie.mp4" type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+
+                <div className="w-full lg:w-1/2 flex flex-col justify-center px-4 text-center lg:text-left">
+                    <h2 className="text-2xl md:text-3xl font-bold text-[#C2778E] mb-2">KYLIE’S FAVE NEW LIP KITS</h2>
+                    <p className="text-gray-700 mb-2">Create the perfect summer lip look with our new <span className="font-semibold">glossy lip kit</span>.</p>
+                    <p className="text-sm text-gray-600 mb-4">
+                        Featuring our ultra-precise precision pout lip liner and cushiony supple kiss lip glaze,
+                        this kit has everything you need for a shiny, contoured, long-lasting lip.
+                    </p>
+                    <p className="text-sm text-gray-600 mb-4">Available in six pre-paired, contrasting shades.</p>
+                    <Button className="self-center lg:self-start">Shop Now</Button>
+                </div>
+            </div>
+
+
+            <div className="bg-[#FDF5F2] py-8 px-4 rounded-xl shadow-md mb-12">
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    {/* Top Left Image */}
+                    <div className="relative overflow-hidden rounded-xl">
+                        <img
+                            src="/images/brown-p.webp"
+                            alt="Brown Mascara"
+                            className="w-full h-full object-cover"
+                        />
+                        <span className="absolute bottom-4 left-4 text-white font-bold text-sm md:text-base drop-shadow">
+                            BROWN IS THE NEW BOLD
+                        </span>
+                    </div>
+
+                    {/* Top Middle Image */}
+                    <div className="relative overflow-hidden rounded-xl">
+                        <img
+                            src="/images/eyes-p.webp"
+                            alt="Full Lashes"
+                            className="w-full h-full object-cover"
+                        />
+                        <span className="absolute bottom-4 left-4 text-white font-bold text-sm md:text-base drop-shadow">
+                            EFFORTLESSLY FULL LASHES
+                        </span>
+                    </div>
+
+                    {/* Top Right Image */}
+                    <div className="relative overflow-hidden rounded-xl">
+                        <img
+                            src="/images/two-p.webp"
+                            alt="Eyes Close Up"
+                            className="w-full h-full object-cover"
+                        />
+                    </div>
+
+                    {/* Bottom Right Image */}
+                    <div className="relative overflow-hidden rounded-xl">
+                        <img
+                            src="/images/right-1.webp"
+                            alt="Mascara Product"
+                            className="w-full h-full object-cover"
+                        />
+                    </div>
+
+                    {/* Center Promo Text */}
+                    <div className="col-span-2 md:col-span-1 bg-white flex flex-col justify-center items-center text-center p-6 rounded-xl shadow">
+                        <h2 className="text-lg md:text-xl font-bold text-[#B57286] mb-2">
+                            YOUR LASHES, BUT FULLER
+                        </h2>
+                        <p className="text-sm text-gray-600 mb-3">
+                            Clean and vegan with a lightweight feel, our KyLash volume mascara
+                            defines, lifts, and holds curl — no clumps, smudges, or flakes.
+                            <br />
+                            <br />
+                            Get it in a new true brown shade that’s perfect for summer.
+                        </p>
+                        <Button>shop now</Button>
+                    </div>
+
+                    {/* Bottom Right Image */}
+                    <div className="relative overflow-hidden rounded-xl">
+                        <img
+                            src="/images/lips-p.webp"
+                            alt="Mascara Product"
+                            className="w-full h-full object-cover"
+                        />
+                    </div>
+                </div>
+            </div>
+
+
+            <div className="relative bg-[#FDF5F2] p-6 rounded-xl shadow mb-12">
+                <h2 className="text-2xl font-bold mb-4">Glossy Lip Kits</h2>
+                <div className="relative overflow-hidden">
+                    <button
+                        onClick={() => scroll("left")}
+                        className="absolute z-10 left-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full shadow p-2"
+                    >
+                        ←
+                    </button>
+                    <div
+                        ref={scrollRef}
+                        className="flex space-x-8 overflow-x-auto no-scrollbar scroll-smooth"
+                    >
+                        {glossyKits.map((item, idx) => (
+                            <div
+                                key={idx}
+                                className="min-w-[260px] bg-white rounded-lg shadow-sm overflow-hidden"
+                            >
+                                <div className="relative">
+                                    <img
+                                        src={item.image}
+                                        alt={item.title}
+                                        className="w-full h-48 object-cover"
+                                    />
+                                    {item.extra && (
+                                        <div className="absolute top-2 left-2 text-xs bg-white text-gray-700 px-4 py-0.5 rounded-full shadow">
+                                            {item.extra}
+                                        </div>
+                                    )}
+                                    {item.tag && (
+                                        <div className="absolute top-2 right-2 text-xs bg-pink-100 text-pink-600 px-2 py-0.5 rounded-full shadow">
+                                            {item.tag}
+                                        </div>
+                                    )}
+                                </div>
+                                <div className="p-4">
+                                    {item.rating && (
+                                        <p className="text-sm text-gray-500 mb-1">★★★★★ ({item.rating})</p>
+                                    )}
+                                    <h3 className="text-sm font-semibold capitalize">{item.title}</h3>
+                                    <p className="text-xs text-gray-500">{item.type}</p>
+                                    <div className="mt-1 text-sm font-bold">
+                                        {item.price}
+                                        {item.originalPrice && (
+                                            <span className="text-xs text-gray-400 line-through ml-2">
+                                                {item.originalPrice}
+                                            </span>
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                    <button
+                        onClick={() => scroll("right")}
+                        className="absolute z-10 right-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full shadow p-2"
+                    >
+                        →
+                    </button>
+                </div>
+            </div>
+
         </div>
     );
 }
